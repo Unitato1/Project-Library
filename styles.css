@@ -1,0 +1,54 @@
+:root {
+  height: 100%;
+  --padding-sides: 15vw;
+}
+
+body {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 0;
+  background-color: #7dd3fc;
+  box-shadow: 1px 1px 5px grey;
+  z-index: 9999;
+}
+
+header > h1 {
+  font-size: calc(18px + 5vh);
+  font-weight: 900;
+}
+#login {
+  font-size: 3vh;
+  border: 0;
+  background-color: #93c5fd;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+#login:hover {
+}
+
+main {
+  flex: 8 8 0;
+  background-color: #e0f2fe;
+}
+footer {
+  background-color: beige;
+  flex: 0.5 0.5 0;
+  display: flex;
+  font-size: 2vh;
+  justify-content: center;
+  background-color: #e0f2fe;
+  align-items: center;
+}
+header,
+main,
+footer {
+  padding-left: var(--padding-sides);
+  padding-right: var(--padding-sides);
+}
