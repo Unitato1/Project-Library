@@ -67,11 +67,12 @@ main {
   flex: 1 1 0;
   width: 100%;
   height: 100%;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-template-rows: repeat(2, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+  grid-template-rows: repeat(2, minmax(50px, 1fr));
   grid-auto-rows: minmax(300px, 1fr);
   display: grid;
   gap: 5vw;
+  margin: 3vh;
 }
 .book {
   display: flex;
@@ -97,4 +98,16 @@ main,
 footer {
   padding-left: var(--padding-sides);
   padding-right: var(--padding-sides);
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
 }
