@@ -8,6 +8,7 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 header {
   display: flex;
@@ -16,7 +17,7 @@ header {
   flex: 1 1 0;
   background-color: #7dd3fc;
   box-shadow: 1px 1px 5px grey;
-  z-index: 9999;
+  z-index: 3;
 }
 
 header > h1 {
@@ -30,12 +31,14 @@ header > h1 {
   color: rgb(0, 0, 0);
   border-radius: 10px;
 }
-#login:hover {
+#login:hover,
+.submit:hover {
   background-color: #21aaea;
   box-shadow: 1px 1px 3px gray;
   transition-duration: 0.4s;
 }
-#login:active {
+#login:active,
+.submit:active {
   padding: 5px;
   color: white;
   transition-duration: 0s;
@@ -105,9 +108,35 @@ footer {
 }
 
 .show {
+  font-size: 5vh;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  border-radius: 6px;
+  background-color: #7dd3fc;
+  width: fit-content;
+  padding: 40px;
+  gap: 3vh;
+}
+.show > div {
+  font-size: 5vh;
   display: flex;
-  flex-direction: column;
+}
+.show > div > input {
+  font-size: 5vh;
+  border-radius: 10px;
+  width: 100%;
+  margin-left: 20px;
+}
+
+.submit {
+  font-size: 4vh;
+  background-color: transparent;
+  border: 0;
+  text-align: center;
+  background-color: #93c5fd;
 }
