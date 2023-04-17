@@ -7,10 +7,38 @@ const bookself = (() => {
     return;
   };
 })();
-console.log("hello");
-const form = document.querySelector("form");
-const add_book = document.querySelector("#book-add");
-add_book.addEventListener("click", () => {
-  console.log("hello");
-  form.className = form.className === "hidden" ? "show" : "hidden";
-});
+
+const main = (() => {
+  const form = document.querySelector("#book-form");
+  const add_book = document.querySelector("#book-add");
+  const main_elements = [
+    document.querySelector("header"),
+    document.querySelector("footer"),
+    document.querySelector("main"),
+  ];
+  let running = false;
+  add_book.addEventListener("click", (e) => {
+    for (element of main_elements) {
+      element.className =
+        element.className === "hidden_behind"
+          ? "showed_behind"
+          : "hidden_behind";
+    }
+    form.className = form.className === "hidden" ? "show" : "hidden";
+    running = true;
+    document.addEventListener("click", (e) => {
+      if (!form.contains(e.target) && running === false) {
+        console.log("hello");
+        for (element of main_elements) {
+          element.className =
+            element.className === "hidden_behind"
+              ? "showed_behind"
+              : "hidden_behind";
+          form.className = form.className === "hidden" ? "show" : "hidden";
+          running = true;
+        }
+      }
+      running = false;
+    });
+  });
+})();

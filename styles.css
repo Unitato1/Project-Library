@@ -1,4 +1,5 @@
-:root {
+:root,
+.showed_behind {
   height: 100%;
   --padding-sides: 15vw;
 }
@@ -8,7 +9,6 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 header {
   display: flex;
@@ -99,12 +99,19 @@ footer {
 header,
 main,
 footer {
+  position: relative;
   padding-left: var(--padding-sides);
   padding-right: var(--padding-sides);
 }
 
 .hidden {
   display: none;
+}
+
+.hidden_behind {
+  position: relative;
+  opacity: 0.5;
+  z-index: 1;
 }
 
 .show {
@@ -121,6 +128,8 @@ footer {
   width: fit-content;
   padding: 40px;
   gap: 3vh;
+  z-index: 99;
+  opacity: 1;
 }
 .show > div {
   font-size: 5vh;
