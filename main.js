@@ -19,7 +19,7 @@ const bookshelf = (() => {
       pages = document.createElement("p");
       pages.innerHTML = book.pages;
       read = document.createElement("button");
-      read.addEventListener();
+      read.addEventListener("click", () => {});
       read.innerHTML = book.read === true ? "Read" : "Not read";
 
       curr_book = document.createElement("div");
