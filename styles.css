@@ -2,15 +2,25 @@
 .showed_behind {
   height: 100%;
   --padding-sides: 15vw;
+  position: relative;
 }
 
-body {
+#main_con {
   height: 100%;
+  position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
-header {
+
+body {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#main_con > header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +30,7 @@ header {
   z-index: 3;
 }
 
-header > h1 {
+#main_con > header > h1 {
   font-size: calc(18px + 5vh);
   font-weight: 900;
 }
@@ -43,7 +53,7 @@ header > h1 {
   color: white;
   transition-duration: 0s;
 }
-main {
+#main_con > main {
   flex: 8 8 0;
   background-color: #e0f2fe;
   flex-direction: column;
@@ -86,8 +96,14 @@ main {
   border-radius: 10px;
   box-shadow: 1px 1px 5px #172554;
   background-color: #e1efff;
+  padding: 20px;
 }
-footer {
+.book:hover {
+  box-shadow: 1px 1px 15px #172554;
+  padding: 25px;
+  transition-duration: 0.5s;
+}
+#main_con > footer {
   background-color: beige;
   flex: 0.5 0.5 0;
   display: flex;
@@ -96,9 +112,9 @@ footer {
   background-color: #e0f2fe;
   align-items: center;
 }
-header,
-main,
-footer {
+#main_con > header,
+#main_con > main,
+#main_con > footer {
   position: relative;
   padding-left: var(--padding-sides);
   padding-right: var(--padding-sides);
@@ -111,7 +127,7 @@ footer {
 .hidden_behind {
   position: relative;
   opacity: 0.5;
-  z-index: 1;
+  z-index: -1;
 }
 
 .show {
@@ -124,12 +140,11 @@ footer {
   transform: translate(-50%, -50%);
   border: 1px solid black;
   border-radius: 6px;
-  background-color: #7dd3fc;
+  background-color: rgb(125, 211, 252, 1);
   width: fit-content;
   padding: 40px;
   gap: 3vh;
-  z-index: 99;
-  opacity: 1;
+  z-index: 9999;
 }
 .show > div {
   font-size: 5vh;
