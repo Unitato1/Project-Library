@@ -3,6 +3,9 @@
   height: 100%;
   --padding-sides: 15vw;
   position: relative;
+  --font-new: url(PlayfairDisplay-VariableFont_wght.ttf);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 #main_con {
@@ -109,10 +112,24 @@ body {
   width: fit-content;
   height: 0px;
 }
-.close:hover {
+
+.del_book {
+  position: relative;
+  left: 50%;
+  top: -30%;
+  font-size: 3.5vh;
+  background-color: transparent;
+  border: 0;
+  color: rgb(255, 0, 0);
+  width: fit-content;
+  height: 0;
+}
+.close:hover,
+.del_book:hover {
   text-shadow: 1px 1px 2px red;
 }
-.close:active {
+.close:active,
+.del_book:active {
   font-size: 2.8vh;
 }
 .book:hover {
@@ -181,4 +198,27 @@ body {
   border: 0;
   text-align: center;
   background-color: #93c5fd;
+}
+
+.read {
+  color: #5cdb5c;
+  text-shadow: 1px 1px 1px #5cdb5c;
+  transition-duration: 0.7s;
+}
+
+.notread {
+  color: #ff0021;
+  text-shadow: 1px 1px 1px #ff0021;
+  transition-duration: 0.7s;
+}
+
+.read,
+.notread {
+  background-color: transparent;
+  border: 0;
+  font-size: 2vh;
+}
+.read:hover,
+.notread:hover {
+  opacity: 0.8;
 }

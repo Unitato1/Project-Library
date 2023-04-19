@@ -1,9 +1,13 @@
 const bookFactory = (title, author, pages, read) => {
-  return { title, author, pages, read };
+  const set_pos = (pos) => {
+    this.pos = pos;
+  };
+  return { title, author, pages, read, set_pos };
 };
 
 const bookshelf = (() => {
   const book_container = document.querySelector("#book-container");
+  let created_books = [];
   const create_bookshelf = (books) => {
     book_container.replaceChildren();
     let curr_book;
@@ -11,22 +15,43 @@ const bookshelf = (() => {
     let author;
     let pages;
     let read;
-    let close_btn = document.createElement("button");
+    let delete_btn;
+    let counter = 0;
+    let curr_pos;
     for (book of books) {
+      delete_btn = document.createElement("button");
+      delete_btn.className = "del_book";
+      delete_btn.innerHTML = "&times;";
+      delete_btn.dataset.pos = counter;
+      counter++;
+      delete_btn.addEventListener("click", function () {
+        curr_pos = this.dataset.pos;
+        console.log(created_books[curr_pos]);
+        created_books[curr_pos].style.display = "none";
+        created_books.splice(curr_pos, curr_pos);
+        books.splice(curr_pos, curr_pos);
+      });
       title = document.createElement("p");
-      title.innerHTML = book.title;
+      title.textContent = book.title;
       author = document.createElement("p");
-      author.innerHTML = book.author;
+      author.textContent = book.author;
       pages = document.createElement("p");
-      pages.innerHTML = book.pages;
+      pages.textContent = book.pages;
       read = document.createElement("button");
-      read.addEventListener("click", () => {});
-      read.innerHTML = book.read === true ? "Read" : "Not read";
 
+      read.addEventListener("click", function () {
+        this.textContent = this.textContent === "Read" ? "Not read" : "Read";
+        this.className = this.textContent === "Read" ? "read" : "notread";
+      });
+
+      read.textContent = book.read === true ? "Read" : "Not read";
+      read.className = read.textContent === "Read" ? "read" : "notread";
       curr_book = document.createElement("div");
       curr_book.className = "book";
+      curr_book.appendChild(delete_btn);
       curr_book.append(title, author, pages, read);
       book_container.appendChild(curr_book);
+      created_books.push(curr_book);
     }
     return;
   };
@@ -42,6 +67,7 @@ const main = (() => {
   const author = document.querySelector("#author");
   const pages = document.querySelector("#pages");
   const read = document.querySelector("#read");
+  const close = document.querySelector(".close");
   let books = [];
 
   const reset_form = () => {
@@ -51,30 +77,36 @@ const main = (() => {
     read.checked = false;
   };
 
-  const toggle_form = () => {
-    main_con.className =
-      main_con.className === "hidden_behind"
-        ? "showed_behind"
-        : "hidden_behind";
-
-    form.className = form.className === "hidden" ? "show" : "hidden";
+  const toggle_form = (turn) => {
+    if (turn) {
+      main_con.className = "hidden_behind";
+      form.className = "show";
+      return;
+    }
+    main_con.className = "showed_behind";
+    form.className = "hidden";
   };
-
-  add_book.addEventListener("click", (e) => {
-    toggle_form();
+  close.addEventListener("click", (e) => {
+    toggle_form(false);
+    e.preventDefault();
+  });
+  document.addEventListener("mousedown", (e) => {
     if (!form.contains(e.target)) {
-      console.log("hello");
+      toggle_form(false);
     }
   });
-  submit.addEventListener("click", (e) => {
-    e.preventDefault();
-    books.push(
-      bookFactory(title.value, author.value, pages.value, read.checked)
-    );
 
-    reset_form();
-    toggle_form();
-    bookshelf.create_bookshelf(books);
-    console.table(books);
+  add_book.addEventListener("click", toggle_form);
+  submit.addEventListener("click", (e) => {
+    if (form.checkValidity()) {
+      e.preventDefault();
+      books.push(
+        bookFactory(title.value, author.value, pages.value, read.checked)
+      );
+      reset_form();
+      toggle_form();
+      bookshelf.create_bookshelf(books);
+      console.table(books);
+    }
   });
 })();
