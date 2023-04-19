@@ -7,7 +7,6 @@ const bookFactory = (title, author, pages, read) => {
 
 const bookshelf = (() => {
   const book_container = document.querySelector("#book-container");
-  let created_books = [];
   const create_bookshelf = (books) => {
     book_container.replaceChildren();
     let curr_book;
@@ -26,10 +25,8 @@ const bookshelf = (() => {
       counter++;
       delete_btn.addEventListener("click", function () {
         curr_pos = this.dataset.pos;
-        console.log(created_books[curr_pos]);
-        created_books[curr_pos].style.display = "none";
-        created_books.splice(curr_pos, curr_pos);
-        books.splice(curr_pos, curr_pos);
+        curr_pos === "0" ? books.shift() : books.splice(curr_pos, curr_pos);
+        create_bookshelf(books);
       });
       title = document.createElement("p");
       title.textContent = book.title;
@@ -51,7 +48,6 @@ const bookshelf = (() => {
       curr_book.appendChild(delete_btn);
       curr_book.append(title, author, pages, read);
       book_container.appendChild(curr_book);
-      created_books.push(curr_book);
     }
     return;
   };
