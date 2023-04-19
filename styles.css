@@ -101,15 +101,16 @@ body {
 }
 .close {
   position: relative;
-  bottom: 51%;
-  left: 51%;
-  font-size: 2.8vh;
+  left: 100%;
+  font-size: 3.5vh;
   background-color: transparent;
   border: 0;
   color: rgb(255, 0, 0);
+  width: fit-content;
+  height: 0px;
 }
 .close:hover {
-  font-size: 3.5vh;
+  text-shadow: 1px 1px 2px red;
 }
 .close:active {
   font-size: 2.8vh;
@@ -159,6 +160,7 @@ body {
   background-color: rgb(125, 211, 252, 1);
   width: fit-content;
   padding: 40px;
+  padding-top: 0;
   gap: 3vh;
   z-index: 9999;
 }

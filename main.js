@@ -11,6 +11,7 @@ const bookshelf = (() => {
     let author;
     let pages;
     let read;
+    let close_btn = document.createElement("button");
     for (book of books) {
       title = document.createElement("p");
       title.innerHTML = book.title;
