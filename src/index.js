@@ -98,16 +98,10 @@ const main = (() => {
   submit.addEventListener("click", (e) => {
     e.preventDefault();
     if (
-      form.checkValidity() &&
-      validating.display_error(title, false) &&
-      validating.display_error(author, false) &&
-      validating.display_error(pages, true)
+      validating.check_Validity_Text(title) &&
+      validating.check_Validity_Text(author) &&
+      validating.check_Validity_Num(pages)
     ) {
-      console.log(
-        validating.display_error(title, false),
-        validating.display_error(author, false),
-        validating.display_error(pages, true)
-      );
       books.push(
         bookFactory(title.value, author.value, pages.value, read.checked)
       );
@@ -115,6 +109,10 @@ const main = (() => {
       toggle_form();
       bookshelf.create_bookshelf(books);
       console.table(books);
+    } else {
+      validating.display_error(title, false),
+        validating.display_error(author, false),
+        validating.display_error(pages, true);
     }
   });
 })();

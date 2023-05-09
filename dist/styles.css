@@ -47,14 +47,13 @@ body {
 #login:hover,
 .submit:hover {
   background-color: #21aaea;
-  box-shadow: 1px 1px 3px gray;
-  transition-duration: 0.4s;
+  box-shadow: 1px 1px 3px #172554;
+  transition-duration: 0.2s;
 }
 #login:active,
 .submit:active {
-  padding: 5px;
   color: white;
-  transition-duration: 0s;
+  transition-duration: 0.1s;
 }
 #main_con > main {
   flex: 8 8 0;
@@ -200,7 +199,12 @@ body {
   background-color: transparent;
   border: 0;
   text-align: center;
-  background-color: #93c5fd;
+  background-color: #21aaea;
+  border-radius: 25px 0px 25px 0px;
+  padding: 6px 15px 6px 15px;
+  border: #172554 2px dashed;
+}
+.submit:hover {
 }
 
 .read {
