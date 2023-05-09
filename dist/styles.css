@@ -184,6 +184,9 @@ body {
 .show > div {
   font-size: 5vh;
   display: flex;
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  grid-template-rows: repeat(2fr);
 }
 .show > div > input {
   font-size: 5vh;
@@ -221,4 +224,13 @@ body {
 .read:hover,
 .notread:hover {
   opacity: 0.8;
+}
+.error {
+  background-color: red;
+  color: white;
+  position: relative;
+  grid-area: 2 / 1/ 3/3;
+  padding: 5px;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 3vh;
 }

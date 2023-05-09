@@ -1,3 +1,5 @@
+import { validating } from "./form_validation";
+
 const bookFactory = (title, author, pages, read) => {
   const set_pos = (pos) => {
     this.pos = pos;
@@ -17,7 +19,7 @@ const bookshelf = (() => {
     let delete_btn;
     let counter = 0;
     let curr_pos;
-    for (book of books) {
+    for (let book of books) {
       delete_btn = document.createElement("button");
       delete_btn.className = "del_book";
       delete_btn.innerHTML = "&times;";
@@ -94,8 +96,18 @@ const main = (() => {
 
   add_book.addEventListener("click", toggle_form);
   submit.addEventListener("click", (e) => {
-    if (form.checkValidity()) {
-      e.preventDefault();
+    e.preventDefault();
+    if (
+      form.checkValidity() &&
+      validating.display_error(title, false) &&
+      validating.display_error(author, false) &&
+      validating.display_error(pages, true)
+    ) {
+      console.log(
+        validating.display_error(title, false),
+        validating.display_error(author, false),
+        validating.display_error(pages, true)
+      );
       books.push(
         bookFactory(title.value, author.value, pages.value, read.checked)
       );
